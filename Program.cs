@@ -1,41 +1,59 @@
-﻿using InverntoryManagment;
-
-namespace InventoryManagment
+﻿namespace StockAccountManagment
 {
     class Program
     {
-        public static void Main(string[] args)
+        public static void Main(String[] args)
         {
-            string path = @"C:\Users\Gone Srinivas\Desktop\New folder\InverntoryManagment\InverntoryManagment\Inventory.json";
-            FetchData fetchData = new FetchData();
-            Inventory data = fetchData.Read(path);
+            String path = @"C:\Users\Gone Srinivas\Desktop\New folder\StockAccountManagment\StockAccountManagment\StockInventory.json";
 
-            for (int i = 0; i < data.typesOfRice.Count; i++)
+            FetchJsonOfStock fetchJsonOfStock = new FetchJsonOfStock();
+
+            Stock inventory = fetchJsonOfStock.Read(path);
+
+            for (int i = 0; i < inventory.banking.Count; i++)
             {
 
-                Console.WriteLine(data.typesOfRice[i].name);
-                Console.WriteLine(data.typesOfRice[i].weight);
-                Console.WriteLine(data.typesOfRice[i].price);
+                Console.WriteLine(inventory.banking[i].stockName);
+                Console.WriteLine(inventory.banking[i].numberOfShares);
+                Console.WriteLine(inventory.banking[i].price);
+
+                int value = inventory.banking[i].numberOfShares * inventory.banking[i].price;
+                Console.WriteLine("The price of {0} for {1}kg is: {2}", inventory.banking[i].stockName, inventory.banking[i].numberOfShares, inventory.banking[i].price);
                 Console.WriteLine("--------------------------");
             }
-            for (int i = 0; i < data.typesOfPulse.Count; i++)
+            for (int i = 0; i < inventory.finance.Count; i++)
             {
 
-                Console.WriteLine(data.typesOfPulse[i].name);
-                Console.WriteLine(data.typesOfPulse[i].weight);
-                Console.WriteLine(data.typesOfPulse[i].price);
+                Console.WriteLine(inventory.finance[i].stockName);
+                Console.WriteLine(inventory.finance[i].numberOfShares);
+                Console.WriteLine(inventory.finance[i].price);
+
+                int value = inventory.finance[i].numberOfShares * inventory.finance[i].price;
+                Console.WriteLine("The price of {0} for {1}kg is: {2}", inventory.finance[i].stockName, inventory.finance[i].numberOfShares, inventory.finance[i].price);
                 Console.WriteLine("--------------------------");
             }
-            for (int i = 0; i < data.typesOfWheat.Count; i++)
+            for (int i = 0; i < inventory.metals.Count; i++)
             {
 
-                Console.WriteLine(data.typesOfWheat[i].name);
-                Console.WriteLine(data.typesOfWheat[i].weight);
-                Console.WriteLine(data.typesOfWheat[i].price);
+                Console.WriteLine(inventory.metals[i].stockName);
+                Console.WriteLine(inventory.metals[i].numberOfShares);
+                Console.WriteLine(inventory.metals[i].price);
+
+                int value = inventory.metals[i].numberOfShares * inventory.metals[i].price;
+                Console.WriteLine("The price of {0} for {1}kg is: {2}", inventory.metals[i].stockName, inventory.metals[i].numberOfShares, inventory.metals[i].price);
+                Console.WriteLine("--------------------------");
+            }
+            for (int i = 0; i < inventory.health.Count; i++)
+            {
+
+                Console.WriteLine(inventory.health[i].stockName);
+                Console.WriteLine(inventory.health[i].numberOfShares);
+                Console.WriteLine(inventory.health[i].price);
+
+                int value = inventory.health[i].numberOfShares * inventory.health[i].price;
+                Console.WriteLine("The price of {0} for {1}kg is: {2}", inventory.health[i].stockName, inventory.health[i].numberOfShares, inventory.health[i].price);
                 Console.WriteLine("--------------------------");
             }
         }
-
     }
 }
-
